@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="15" style="-fx-padding: 20; -fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.report.PendingReportsReviewController">
+
+    <Label style="-fx-font-size: 18; -fx-font-weight: bold;" text="Pending Reports &amp; Evidence Review" />
+
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label fx:id="reportsCountLabel" style="-fx-font-weight: bold;" text="Pending Reports: 0" />
+        <Label fx:id="evidenceCountLabel" style="-fx-font-weight: bold; -fx-padding: 0 0 0 20;" text="Pending Evidence: 0" />
+        <Label fx:id="recycleReportsCountLabel" style="-fx-font-weight: bold; -fx-padding: 0 0 0 20;" text="Archived Reports: 0" />
+        <Label fx:id="recycleEvidenceCountLabel" style="-fx-font-weight: bold; -fx-padding: 0 0 0 20;" text="Archived Evidence: 0" />
+    </HBox>
+
+    <Separator />
+
+    <TabPane fx:id="reviewTabs" prefHeight="550">
+        <tabs>
+            <!-- Tab 1: Pending Reports -->
+            <Tab fx:id="pendingReportsTab" closable="false" text="Pending Reports">
+                <VBox spacing="10" style="-fx-padding: 10;">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Button fx:id="validateReportButton" disable="true" onAction="#handleValidateReport" style="-fx-background-color: #28a745; -fx-text-fill: white;" text="Validate Selected Reports" />
+                        <Button fx:id="rejectReportButton" disable="true" onAction="#handleRejectReport" style="-fx-background-color: #dc3545; -fx-text-fill: white;" text="Reject Report" />
+                    </HBox>
+                    
+                    <TableView fx:id="reportsTable" prefHeight="480">
+                        <columns>
+                            <TableColumn fx:id="reportSelectCol" prefWidth="60" text="Select" />
+                            <TableColumn fx:id="reportIdCol" prefWidth="80" text="Report ID" />
+                            <TableColumn fx:id="reportDateCol" prefWidth="150" text="Date Reported" />
+                            <TableColumn fx:id="reportDescriptionCol" prefWidth="350" text="Description" />
+                            <TableColumn fx:id="reportStatusCol" prefWidth="100" text="Status" />
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <!-- Tab 2: Pending Evidence -->
+            <Tab fx:id="pendingEvidenceTab" closable="false" text="Pending Evidence">
+                <VBox spacing="10" style="-fx-padding: 10;">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Button fx:id="verifyEvidenceButton" disable="true" onAction="#handleVerifyEvidence" style="-fx-background-color: #28a745; -fx-text-fill: white;" text="Verify Evidence" />
+                        <Button fx:id="rejectEvidenceButton" disable="true" onAction="#handleRejectEvidence" style="-fx-background-color: #dc3545; -fx-text-fill: white;" text="Reject Evidence" />
+                    </HBox>
+
+                    <SplitPane dividerPositions="0.7275132275132276" orientation="HORIZONTAL" VBox.vgrow="ALWAYS">
+                        <items>
+                            <VBox spacing="8" style="-fx-background-color: #ffffff; -fx-padding: 12; -fx-border-color: #e5e5e5; -fx-border-radius: 8; -fx-background-radius: 8;">
+                                <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="Pending Evidence List" />
+                                <TableView fx:id="evidenceTable" prefHeight="480.0" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="evidenceSelectCol" prefWidth="60" text="Select" />
+                                        <TableColumn fx:id="evidenceIdCol" prefWidth="80" text="Evidence ID" />
+                                        <TableColumn fx:id="evidenceIncidentCol" prefWidth="100" text="Incident ID" />
+                                        <TableColumn fx:id="evidenceTypeCol" prefWidth="150" text="Type" />
+                                        <TableColumn fx:id="evidenceDateCol" prefWidth="150" text="Submitted" />
+                                        <TableColumn fx:id="evidenceStatusCol" prefWidth="120" text="Status" />
+                                    </columns>
+                                </TableView>
+                            </VBox>
+
+                            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" VBox.vgrow="ALWAYS">
+                                <VBox spacing="10" style="-fx-background-color: #ffffff; -fx-padding: 12; -fx-border-color: #e5e5e5; -fx-border-radius: 8; -fx-background-radius: 8;">
+                                    <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="Evidence Preview" />
+                                    <StackPane prefHeight="320" style="-fx-background-color: #f5f6f8; -fx-border-color: #e5e5e5; -fx-border-radius: 8; -fx-background-radius: 8;">
+                                        <ImageView fx:id="evidencePreviewImage" fitHeight="300" fitWidth="420" managed="false" preserveRatio="true" smooth="true" visible="false" />
+                                        <Label fx:id="previewPlaceholderLabel" style="-fx-text-fill: #6c757d;" text="Select an evidence item to preview." wrapText="true" StackPane.alignment="CENTER" />
+                                    </StackPane>
+                                    <Label fx:id="previewMetadataLabel" style="-fx-font-size: 12; -fx-text-fill: #333333;" wrapText="true" />
+                                    <Label fx:id="previewFilePathLabel" style="-fx-font-size: 12; -fx-text-fill: #555555;" wrapText="true" />
+                                    <Hyperlink fx:id="openFileLocationLink" managed="false" onAction="#handleOpenFileLocation" text="Open in Image Viewer" visible="false" />
+                                    <Label style="-fx-font-size: 11; -fx-text-fill: #6c757d;" text="Only image evidence can be previewed here. Other file types rely on the file path link." wrapText="true" />
+                                </VBox>
+                            </ScrollPane>
+                        </items>
+                    </SplitPane>
+                </VBox>
+            </Tab>
+
+            <!-- Tab 3: Recycle Bin -->
+            <Tab fx:id="recycleBinTab" closable="false" text="Recycle Bin">
+                <VBox spacing="15" style="-fx-padding: 10;">
+                    <Label style="-fx-font-weight: bold;" text="Archived Reports" />
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Button fx:id="restoreReportButton" disable="true" onAction="#handleRestoreReports" style="-fx-background-color: #2BC1CF; -fx-text-fill: white;" text="Restore Selected Reports" />
+                    </HBox>
+                    <TableView fx:id="recycleReportsTable" prefHeight="200">
+                        <columns>
+                            <TableColumn fx:id="recycleReportSelectCol" prefWidth="60" text="Select" />
+                            <TableColumn fx:id="recycleReportIdCol" prefWidth="80" text="Report ID" />
+                            <TableColumn fx:id="recycleReportReasonCol" prefWidth="250" text="Reason" />
+                            <TableColumn fx:id="recycleReportArchivedCol" prefWidth="150" text="Archived At" />
+                        </columns>
+                    </TableView>
+
+                    <Label style="-fx-font-weight: bold;" text="Archived Evidence" />
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Button fx:id="restoreEvidenceButton" disable="true" onAction="#handleRestoreEvidence" style="-fx-background-color: #2BC1CF; -fx-text-fill: white;" text="Restore Selected Evidence" />
+                    </HBox>
+                    <TableView fx:id="recycleEvidenceTable" prefHeight="200">
+                        <columns>
+                            <TableColumn fx:id="recycleEvidenceSelectCol" prefWidth="60" text="Select" />
+                            <TableColumn fx:id="recycleEvidenceIdCol" prefWidth="90" text="Evidence ID" />
+                            <TableColumn fx:id="recycleEvidenceIncidentCol" prefWidth="100" text="Incident ID" />
+                            <TableColumn fx:id="recycleEvidenceTypeCol" prefWidth="150" text="Type" />
+                            <TableColumn fx:id="recycleEvidenceArchivedCol" prefWidth="150" text="Archived At" />
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+        </tabs>
+    </TabPane>
+
+</VBox>

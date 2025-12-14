@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="15" style="-fx-padding: 20; -fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.report.EvaluateReportsController">
+
+    <Label style="-fx-font-size: 18; -fx-font-weight: bold;" text="Evaluate Reports" />
+    
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label fx:id="reportsCountLabel" style="-fx-font-weight: bold;" text="Total Reports: 0" />
+    </HBox>
+
+    <Separator />
+
+    <SplitPane dividerPositions="0.6" orientation="HORIZONTAL" VBox.vgrow="ALWAYS">
+        <items>
+            <!-- Left side: Reports Table -->
+            <VBox spacing="10" style="-fx-background-color: #ffffff; -fx-padding: 12; -fx-border-color: #e5e5e5; -fx-border-radius: 8; -fx-background-radius: 8;">
+                <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="All Reports" />
+                <ScrollPane fitToWidth="false" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED" VBox.vgrow="ALWAYS">
+                    <TableView fx:id="reportsTable" prefHeight="550.0">
+                        <columns>
+                            <TableColumn fx:id="reportIdCol" prefWidth="80" text="Report ID" />
+                            <TableColumn fx:id="reportDateCol" prefWidth="150" text="Date Reported" />
+                            <TableColumn fx:id="reportAttackTypeCol" prefWidth="150" text="Attack Type" />
+                            <TableColumn fx:id="reportDescriptionCol" prefWidth="400" text="Description" />
+                            <TableColumn fx:id="reportStatusCol" prefWidth="100" text="Status" />
+                        </columns>
+                    </TableView>
+                </ScrollPane>
+            </VBox>
+
+            <!-- Right side: Evaluation Form -->
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" VBox.vgrow="ALWAYS">
+                <VBox spacing="15" style="-fx-background-color: #ffffff; -fx-padding: 12; -fx-border-color: #e5e5e5; -fx-border-radius: 8; -fx-background-radius: 8;">
+                    <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="Report Evaluation" />
+                    
+                    <Label fx:id="selectedReportLabel" style="-fx-font-weight: bold; -fx-text-fill: #2BC1CF;" text="No report selected" />
+                    
+                    <Separator />
+                    
+                    <Label style="-fx-font-weight: bold;" text="Perpetrator Information" />
+                    
+                    <VBox spacing="8">
+                        <Label text="Identifier:" />
+                        <TextField fx:id="perpetratorIdentifierField" promptText="e.g., +63-912-345-6789" />
+                    </VBox>
+                    
+                    <VBox spacing="8">
+                        <Label text="Identifier Type:" />
+                        <ComboBox fx:id="identifierTypeCombo" prefWidth="300.0" />
+                    </VBox>
+                    
+                    <VBox spacing="8">
+                        <Label text="Associated Name (Optional):" />
+                        <TextField fx:id="associatedNameField" promptText="e.g., Scammer Name" />
+                    </VBox>
+                    
+                    <VBox spacing="8">
+                        <Label text="Threat Level:" />
+                        <ComboBox fx:id="threatLevelCombo" prefWidth="300.0" />
+                    </VBox>
+                    
+                    <HBox spacing="10">
+                        <Button fx:id="updatePerpetratorButton" disable="true" onAction="#handleUpdatePerpetrator" style="-fx-background-color: #2BC1CF; -fx-text-fill: white;" text="Update Perpetrator" />
+                    </HBox>
+                    
+                    <Separator />
+                    
+                    <Label style="-fx-font-weight: bold;" text="Evaluation Notes" />
+                    
+                    <VBox spacing="8">
+                        <TextArea fx:id="evaluationNotesArea" prefHeight="150.0" prefWidth="400.0" promptText="Enter evaluation notes here..." wrapText="true" />
+                        <Button fx:id="saveEvaluationButton" onAction="#handleSaveEvaluation" style="-fx-background-color: #007bff; -fx-text-fill: white;" text="Save Evaluation Notes" />
+                    </VBox>
+                </VBox>
+            </ScrollPane>
+        </items>
+    </SplitPane>
+
+</VBox>
+

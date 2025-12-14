@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="rootPane" prefHeight="750.0" prefWidth="1200.0" style="-fx-background-color: #2BC1CF;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminDashboardController">
+
+    <!-- TOP BAR -->
+    <top>
+        <VBox prefHeight="95.0" prefWidth="1200.0" style="-fx-background-color: #ff4d4d; -fx-padding: 15;">
+            <children>
+                <HBox alignment="CENTER_RIGHT" prefHeight="94.0" prefWidth="1180.0" spacing="10" style="-fx-padding: 0;">
+                   <HBox alignment="CENTER_LEFT" prefHeight="89.0" prefWidth="891.0" spacing="15">
+                       <ImageView fitHeight="89.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                               <Image url="@../../assets/ccinfom%20phishnet%20logo.png" />
+                           </image>
+                       </ImageView>
+                       <Label prefHeight="25.0" prefWidth="204.0" text="ADMIN DASHBOARD" textFill="WHITE">
+                           <font>
+                               <Font name="Century Gothic Bold" size="20.0" />
+                           </font>
+                       </Label>
+                   </HBox>
+               <HBox alignment="CENTER_LEFT" prefHeight="89.0" prefWidth="220.0">
+                  <children>
+                          <Label fx:id="adminNameLabel" minWidth="100.0" maxWidth="200.0" prefHeight="18.0" text="Admin: Loading..." textFill="WHITE" textOverrun="ELLIPSIS">
+                              <font>
+                                  <Font name="Century Gothic" size="14.0" />
+                              </font>
+                          </Label>
+                  </children>
+               </HBox>
+                    <Button onAction="#handleLogout" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #2BC1CF; -fx-text-fill: white;" text="Logout">
+                        <font>
+                            <Font name="Century Gothic Bold" size="13.0" />
+                        </font>
+                    </Button>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+
+    <!-- CENTER: TABS -->
+    <center>
+        <TabPane fx:id="tabPane" style="-fx-background-color: #f8f9fa;" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+
+                <!-- TAB 1: Generate Report (consolidates all report types) -->
+                <Tab text="Generate Report">
+                    <fx:include fx:id="generateReport" source="reports/GenerateReport.fxml" />
+                </Tab>
+
+                <!-- TAB 2: Pending Reports Review -->
+                <Tab text="Pending Reports Review">
+                    <fx:include fx:id="pendingReportsReview" source="reports/PendingReportsReview.fxml" />
+                </Tab>
+
+                <!-- TAB 3: Evaluate Reports -->
+                <Tab text="Evaluate Reports">
+                    <fx:include fx:id="evaluateReports" source="reports/EvaluateReports.fxml" />
+                </Tab>
+
+                <!-- TAB 4: Manual Report -->
+                <Tab text="Manual Report">
+                    <fx:include fx:id="adminCreateReport" source="reports/AdminCreateReport.fxml" />
+                </Tab>
+
+            </tabs>
+        </TabPane>
+    </center>
+
+</BorderPane>

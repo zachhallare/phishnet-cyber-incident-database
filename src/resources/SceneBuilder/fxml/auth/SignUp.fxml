@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: #2BC1CF;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
+
+    <children>
+      <Pane layoutX="160.0" prefHeight="450.0" prefWidth="284.0" style="-fx-background-color: #ff4d4d;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="160.0" layoutX="71.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../assets/phishnet.png" />
+               </image>
+            </ImageView>
+
+                <!-- Input Fields -->
+                <TextField fx:id="nameField" layoutX="46.0" layoutY="180.0" prefHeight="30.0" prefWidth="201.0" promptText="Full Name" />
+                <TextField fx:id="emailField" layoutX="46.0" layoutY="216.0" prefHeight="30.0" prefWidth="201.0" promptText="Email" />
+                <PasswordField fx:id="passwordField" layoutX="46.0" layoutY="253.0" prefHeight="30.0" prefWidth="201.0" promptText="Password" />
+                <PasswordField fx:id="confirmPasswordField" layoutX="46.0" layoutY="289.0" prefHeight="30.0" prefWidth="201.0" promptText="Confirm Password" />
+
+                <!-- Sign Up Button -->
+                <Button fx:id="signUpButton" layoutX="46.0" layoutY="342.0" onAction="#handleSignUp" prefHeight="40.0" prefWidth="201.0" text="Sign Up">
+                    <font>
+                        <Font name="Century Gothic Bold" size="16.0" />
+                    </font>
+                </Button>
+            <Line endX="100.0" layoutX="146.0" layoutY="331.0" startX="-100.0" stroke="WHITE" />
+         </children>
+      </Pane>
+      <Hyperlink fx:id="adminLoginLink" layoutX="30.0" layoutY="415.0" onAction="#handleAdminLogin" text="Back to Log In" textFill="WHITE">
+         <font>
+            <Font name="Century Gothic Bold" size="12.0" />
+         </font>
+      </Hyperlink>
+    </children>
+</Pane>

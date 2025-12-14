@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.report.AdminCreateReportController"
+      style="-fx-background-color: #f8f9fa;">
+
+    <TabPane fx:id="tabPane" style="-fx-background-color: #f8f9fa;" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+        <tabs>
+            <Tab text="Submit Report">
+                <fx:include fx:id="reportIncidentTab" source="../../victim/reports/ReportIncident.fxml" />
+            </Tab>
+            <Tab text="Upload Evidence">
+                <fx:include fx:id="uploadEvidenceTab" source="../../victim/reports/UploadEvidence.fxml" />
+            </Tab>
+            <Tab text="View My Reports">
+                <fx:include fx:id="viewMyReportsTab" source="../../victim/reports/ViewMyReports.fxml" />
+            </Tab>
+        </tabs>
+    </TabPane>
+
+</VBox>
+

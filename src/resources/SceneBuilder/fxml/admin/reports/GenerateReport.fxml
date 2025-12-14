@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.report.GenerateReportController"
+      style="-fx-background-color: #f8f9fa;">
+
+    <TabPane fx:id="reportTabPane" tabClosingPolicy="UNAVAILABLE" style="-fx-background-color: #f8f9fa;">
+        <tabs>
+            <!-- Sub-tab 1: Monthly Attack Trends -->
+            <Tab text="Monthly Attack Trends">
+                <fx:include source="../../shared/MonthlyAttackTrendsReport.fxml" />
+            </Tab>
+
+            <!-- Sub-tab 2: Top Perpetrators -->
+            <Tab text="Top Perpetrators">
+                <fx:include source="../../shared/TopPerpetratorsReport.fxml" />
+            </Tab>
+
+            <!-- Sub-tab 3: Victim Activity -->
+            <Tab text="Victim Activity">
+                <fx:include source="../../shared/VictimActivityReport.fxml" />
+            </Tab>
+
+            <!-- Sub-tab 4: Incident Evidence Summary -->
+            <Tab text="Incident Evidence Summary">
+                <fx:include source="../../shared/IncidentEvidenceSummaryReport.fxml" />
+            </Tab>
+        </tabs>
+    </TabPane>
+
+</VBox>
+

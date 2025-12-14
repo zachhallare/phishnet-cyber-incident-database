@@ -1,0 +1,18 @@
+# Database Configuration Template
+# Copy this file to application.properties and update with your actual credentials
+
+# Database URL
+db.url=jdbc:mysql://localhost:3306/CybersecurityDB
+
+# Database Credentials
+db.username=root
+db.password=YOUR_PASSWORD_HERE
+
+# Connection Pool Settings (optional)
+db.maxPoolSize=10
+db.connectionTimeout=30000
+
+# Application Settings
+app.name=PhishNet - Cybersecurity Incident Reporting System
+app.version=2.0.0
+

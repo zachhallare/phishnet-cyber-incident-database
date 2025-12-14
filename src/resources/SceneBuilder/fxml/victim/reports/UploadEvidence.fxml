@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+
+<VBox xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.UploadEvidenceController"
+      spacing="15" style="-fx-padding: 20; -fx-background-color: #f8f9fa;">
+
+    <Label text="Upload Evidence" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="10" vgap="15" style="-fx-padding: 10;">
+        <columnConstraints>
+            <ColumnConstraints minWidth="150" prefWidth="150"/>
+            <ColumnConstraints minWidth="400" prefWidth="400" hgrow="ALWAYS"/>
+        </columnConstraints>
+
+        <Label text="Evidence Type:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold;"/>
+        <ComboBox fx:id="evidenceTypeCombo" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="300"/>
+
+        <Label text="Incident:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold;"/>
+        <ComboBox fx:id="incidentCombo" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="300"/>
+
+        <Label text="File Path:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold;"/>
+        <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="filePathField" prefWidth="300" editable="false"/>
+            <Button fx:id="browseButton" text="Browse..." onAction="#handleBrowse"/>
+        </HBox>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 10;">
+        <Button fx:id="uploadButton" text="Upload Evidence" onAction="#handleUpload" 
+                style="-fx-background-color: #2BC1CF; -fx-text-fill: white;" disable="true"/>
+    </HBox>
+
+    <Label fx:id="statusLabel" text="" style="-fx-text-fill: green;"/>
+
+</VBox>

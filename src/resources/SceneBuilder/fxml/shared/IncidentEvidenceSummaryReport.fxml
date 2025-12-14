@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.report.IncidentEvidenceSummaryReportController"
+      spacing="15" style="-fx-padding: 20; -fx-background-color: #f8f9fa;">
+
+    <Label text="Incident Evidence Summary Report" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Year:" style="-fx-font-weight: bold;"/>
+        <ComboBox fx:id="yearCombo" prefWidth="100"/>
+        <Label text="Month:" style="-fx-font-weight: bold;"/>
+        <ComboBox fx:id="monthCombo" prefWidth="100"/>
+        <Button fx:id="generateButton" text="Generate Report" onAction="#handleGenerate"
+                style="-fx-background-color: #ff4d4d; -fx-text-fill: white;"/>
+        <Button fx:id="exportButton" text="Export to CSV" onAction="#handleExport" disable="true"
+                style="-fx-background-color: #2BC1CF; -fx-text-fill: white;"/>
+    </HBox>
+
+    <Separator/>
+
+    <TableView fx:id="table" prefHeight="500">
+        <columns>
+            <TableColumn fx:id="typeCol" text="Evidence Type" prefWidth="130"/>
+            <TableColumn fx:id="statusCol" text="Status" prefWidth="110"/>
+            <TableColumn fx:id="adminCol" text="Reviewed By" prefWidth="160"/>
+            <TableColumn fx:id="dateCol" text="Submitted On" prefWidth="150"/>
+        </columns>
+    </TableView>
+
+    <Label fx:id="statusLabel" text="" style="-fx-text-fill: green;"/>
+</VBox>
